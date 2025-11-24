@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Le Prince de la Fragrance | Luxury Perfumes</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --gold: #D4AF37;
+            --gold-light: #F3E5AB;
+            --black: #111111;
+            --charcoal: #222222;
+            --white: #ffffff;
+            --text-gray: #666666;
+            --light-bg: #f9f9f9;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Lato', sans-serif;
+            background-color: var(--white);
+            color: var(--charcoal);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            color: var(--black);
+        }
+
+        /* Utility Classes */
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        .text-gold { color: var(--gold); }
+        .text-center { text-align: center; }
+        .btn {
+            display: inline-block;
+            padding: 15px 40px;
+            background-color: var(--black);
+            color: var(--gold);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-decoration: none;
+            font-weight: 700;
+            border: 1px solid var(--gold);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: var(--gold);
+            color: var(--black);
+        }
+
+        /* Header */
+        header {
+            background: var(--black);
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 2px solid var(--gold);
+        }
+
+        .nav-flex {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: var(--white);
+            font-weight: 700;
+            letter-spacing: 2px;
+        }
+
+        .logo span { color: var(--gold); }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li { margin-left: 30px; }
+        
+        nav ul li a {
+            color: var(--white);
+            text-decoration: none;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover { color: var(--gold); }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1615634260167-c8cdede054de?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            color: var(--white);
+        }
+        
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            color: var(--gold-light);
+        }
+
+        /* Offers / Packs Section */
+        .offers {
+            padding: 80px 0;
+            background-color: var(--light-bg);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        .section-title .line {
+            width: 80px;
+            height: 3px;
+            background-color: var(--gold);
+            margin: 0 auto;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .product-card {
+            background: var(--white);
+            border: 1px solid #eee;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-align: center;
+            position: relative;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+
+        .badge {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background-color: var(--gold);
+            color: var(--black);
+            padding: 5px 10px;
+            font-weight: bold;
+            font-size: 0.8rem;
+        }
+
+        .product-img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            background-color: #f4f4f4;
+        }
+
+        .card-body {
+            padding: 25px;
+        }
+
+        .card-body h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .price {
+            font-size: 1.3rem;
+            color: var(--gold);
+            font-weight: 700;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .old-price {
+            text-decoration: line-through;
+            color: #999;
+            font-size: 1rem;
+            margin-right: 10px;
+        }
+
+        /* Order Form Section */
+        .order-section {
+            padding: 80px 0;
+            background-color: var(--white);
+        }
+
+        .form-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: var(--light-bg);
+            padding: 40px;
+            border: 2px solid var(--gold);
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            font-family: inherit;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--gold);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--black);
+            color: var(--white);
+            padding: 50px 0 20px;
+            text-align: center;
+        }
+
+        .social-icons a {
+            color: var(--white);
+            font-size: 1.5rem;
+            margin: 0 10px;
+            transition: color 0.3s;
+        }
+        
+        .social-icons a:hover { color: var(--gold); }
+
+        .copyright {
+            margin-top: 30px;
+            font-size: 0.8rem;
+            color: #777;
+            border-top: 1px solid #333;
+            padding-top: 20px;
+        }
+
+        /* Floating WhatsApp */
+        .whatsapp-float {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            bottom: 40px;
+            right: 40px;
+            background-color: #25d366;
+            color: #FFF;
+            border-radius: 50px;
+            text-align: center;
+            font-size: 30px;
+            box-shadow: 2px 2px 3px #999;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            background-color: #20b558;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-content h1 { font-size: 2.5rem; }
+            .nav-flex { flex-direction: column; }
+            nav ul { margin-top: 20px; }
+            nav ul li { margin: 0 10px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container nav-flex">
+            <div class="logo">LE PRINCE <span>DE LA FRAGRANCE</span></div>
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#offers">Collection</a></li>
+                    <li><a href="#order">Order Now</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero" id="home">
+        <div class="container hero-content">
+            <h1>Leave an Unforgettable Mark</h1>
+            <p>Inspired by world-class luxury. Prices that make sense.</p>
+            <a href="#offers" class="btn">Discover the Collection</a>
+        </div>
+    </section>
+
+    <section class="offers" id="offers">
+        <div class="container">
+            <div class="section-title">
+                <h2>Exclusive Offers</h2>
+                <div class="line"></div>
+                <p style="margin-top: 15px; color: #666;">Select your package. Free delivery across Morocco.</p>
+            </div>
+
+            <div class="grid">
+                <div class="product-card">
+                    <span class="badge">BEST SELLER</span>
+                    <img src="https://images.unsplash.com/photo-1594035910387-406691aa6081?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Perfume Pack" class="product-img">
+                    <div class="card-body">
+                        <h3>The Starter Pack</h3>
+                        <p class="text-gold">3 Perfumes of your choice</p>
+                        <hr style="border: 0; border-top: 1px solid #eee; margin: 15px 0;">
+                        <span class="price"><span class="old-price">399 DH</span> 199 DH</span>
+                        <a href="#order" class="btn" style="width: 100%; padding: 10px;">Order Now</a>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <span class="badge">POPULAR</span>
+                    <img src="https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Perfume Pack" class="product-img">
+                    <div class="card-body">
+                        <h3>The Royal Collection</h3>
+                        <p class="text-gold">5 Perfumes of your choice</p>
+                        <hr style="border: 0; border-top: 1px solid #eee; margin: 15px 0;">
+                        <span class="price"><span class="old-price">699 DH</span> 299 DH</span>
+                        <a href="#order" class="btn" style="width: 100%; padding: 10px;">Order Now</a>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <span class="badge">ULTIMATE</span>
+                    <img src="https://images.unsplash.com/photo-1523293182086-7651a899d37f?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Perfume Pack" class="product-img">
+                    <div class="card-body">
+                        <h3>The Prince Gift Set</h3>
+                        <p class="text-gold">7 Perfumes + Free Gift</p>
+                        <hr style="border: 0; border-top: 1px solid #eee; margin: 15px 0;">
+                        <span class="price"><span class="old-price">999 DH</span> 499 DH</span>
+                        <a href="#order" class="btn" style="width: 100%; padding: 10px;">Order Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="order-section" id="order">
+        <div class="container">
+            <div class="section-title">
+                <h2>Express Order</h2>
+                <div class="line"></div>
+                <p style="margin-top:10px;">Fill in your details. We will call you to confirm. Payment on delivery.</p>
+            </div>
+
+            <div class="form-container">
+                <form>
+                    <div class="form-group">
+                        <label for="offer">Choose your Offer</label>
+                        <select id="offer" class="form-control">
+                            <option>Pack of 3 Perfumes - 199 DH</option>
+                            <option>Pack of 5 Perfumes - 299 DH</option>
+                            <option>Pack of 7 Perfumes - 499 DH</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" class="form-control" placeholder="e.g. Ahmed Benali">
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" class="form-control" placeholder="06 XX XX XX XX">
+                    </div>
+                    <div class="form-group">
+                        <label for="city">City</label>
+                        <input type="text" id="city" class="form-control" placeholder="Casablanca, Rabat, etc.">
+                    </div>
+                    <div class="form-group">
+                        <label for="address">Address</label>
+                        <input type="text" id="address" class="form-control" placeholder="Delivery Address">
+                    </div>
+                    <button type="submit" class="btn" style="width: 100%;">Confirm Order</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="logo" style="margin-bottom: 20px;">LE PRINCE</div>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-tiktok"></i></a>
+            </div>
+            <p style="margin-top: 20px; color: #ccc;">Delivery all over Morocco | 100% Quality Guarantee</p>
+            <div class="copyright">
+                &copy; 2024 Le Prince de la Fragrance. All Rights Reserved.
+            </div>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/212600000000" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+</body>
+</html>
